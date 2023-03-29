@@ -1,0 +1,93 @@
+* {
+   font-family: 'Noto Sans', sans-serif;
+}
+
+html {
+   background-image: url(./Images/background-image.jpeg);
+   background-repeat: repeat;
+   /* background-size: cover; */
+}
+
+header {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   background-color: #1d1e3d;
+   color:#c7cacc
+   ;
+   border-bottom: solid 3px #c7cacc
+   ;
+   margin: auto;
+   width: 70rem;
+   height: 7rem;
+   text-align: center;
+}
+
+header h1 {
+   font-family: 'Alkatra', cursive;
+   font-size: 40pt;
+   letter-spacing: 2px;
+}
+
+main {
+   height: 43rem;
+   width: 80rem;
+   margin: auto;
+}
+
+main button {
+   background-color: #dadbe4;
+   /* margin: 0 auto; */
+   height: 5rem;
+   width: 20rem;
+   border-radius: 10%;
+   color: #1d1e3d;
+   font-size: 26pt;
+   letter-spacing: 2px;
+   font-style: italic;
+}
+
+.flex {
+   display: flex;
+}
+
+.game-section {
+   display: flex;
+   justify-content: space-around;
+   align-items: center;
+   width: 80rem;
+}
+
+.column {
+   flex-direction: column;
+   justify-content: space-around;
+   align-items: center;
+}
+
+.cream-background {
+   background-color: #fff4e9;
+}
+
+.scorecard {
+   height: 3rem;
+   width: 15rem;
+   margin: auto;
+   border: 3px solid black;
+}
+
+#turn-counter {
+   height: 5rem;
+   width: 15rem;
+}
+
+#game-board {
+   width: 30rem;
+   height: 30rem;
+   display: grid;
+   border: 3px solid black
+}
+
+#game-log {
+ height: 15rem;
+ width: 15rem;
+}
