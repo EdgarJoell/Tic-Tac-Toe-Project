@@ -89,9 +89,14 @@ main button {
 }
 
 #turn-counter {
-   height: 5rem;
+   height: 7rem;
    width: 20rem;
+   text-align: center;
    border-radius: 10px;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-around;
+   align-items: center;
 }
 
 #game-area {
@@ -115,6 +120,12 @@ main button {
    border: 2px solid #fff4e9;
 }  
 
-/* button{
-   visibility: hidden;
-} */
+#turn-counter h4 {
+   border-bottom: 1px solid #1d1e3d;
+   width: 8rem;
+   margin: 0;
+}
+
+#turn-counter h3 {
+   margin: 0;
+}
