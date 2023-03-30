@@ -1,13 +1,45 @@
-// Declare DOM variables
+// Declare DOM variables ----------------------------------
 const playBtn = document.querySelector("#play-btn");
 const gameBoard = document.querySelector("#game-board");
 const whoIsPlaying = document.querySelector("#turn-counter h3");
 let boardClasses;
 
-// Declare normal variables
-let player = "";
+// Player Objects -----------------------------------------
+let playerOne = {
+   name: "Player One",
+   spotsFilled: []
+};
 
-// Functions
+let playerTwo = {
+   name: "Player Two",
+   spotsFilled: []
+};
+
+// Declare normal variables -------------------------------
+let currentPlayer = playerOne.name;
+const winningCombos = [
+	[0, 1, 2],
+	[3, 4, 5],
+	[6, 7, 8],
+	[0, 3, 6],
+	[1, 4, 7],
+	[2, 5, 8],
+	[0, 4, 8],
+	[2, 4, 6]
+];
+
+// Check player objects grid locations and see if they determine a winner
+if(playerOne.spotsFilled.length >= 3) {
+   playerOne.spotsFilled.sort();
+   console.log(playerOne.spotsFilled);
+} else if(playerTwo.spotsFilled.length >= 3) {
+   playerTwo.spotsFilled.sort();
+   console.log(playerOne.spotsFilled);
+}
+
+// Functions ----------------------------------------------
+
+// Make Game Board
 function makeBoard(event) {
    event.preventDefault();
    let divs = [];
@@ -23,67 +55,61 @@ function makeBoard(event) {
    }
    boardClasses = document.querySelectorAll(".square");
    console.log(boardClasses);
-   whoIsPlaying.innerText = "It is Player One's turn";
-   player = "Player One";
-   console.log(player);
+   whoIsPlaying.innerText = `It is ${currentPlayer} turn`;
 }
 
+// Hide play button at beginning
+function hideBtn(event) {
+   event.target.style.visibility = "hidden";
+}
+
+// Fill Grid Spots
 function fillBox(event) {
-   if (player === "Player One") {
+   if (currentPlayer === playerOne.name) {
       event.target.style.backgroundImage = "url(./Images/X-image.jpg)";
       event.target.style.backgroundSize = "cover";
       event.target.style.backgroundRepeat = "no-repeat";
-   } else if(player === "Player Two"){ 
+      playerOne.spotsFilled.push(event.target.id);
+   } else if(currentPlayer === playerTwo.name){ 
       event.target.style.backgroundImage = "url(./Images/O-image.jpg)";
       event.target.style.backgroundSize = "cover";
       event.target.style.backgroundRepeat = "no-repeat";
+      playerTwo.spotsFilled.push(event.target.id);
    } else {
       console.log("Can no longer click to change this");
    }
 }
 
+// Assign grid spots to their respective class when clicked
 function addClass(event) {
-   if(player === "Player One") {
-      console.log("I should be first");
+   if(currentPlayer === playerOne.name) {
       event.target.classList.add("X");
       event.target.classList.remove("O");
-   } else if(player === "Player Two") {
-      console.log("I should be second");
+   } else if(currentPlayer === playerTwo.name) {
       event.target.classList.add("O");
       event.target.classList.remove("X");
    }
 }
 
-function hideBtn(event) {
-   event.target.style.visibility = "hidden";
-}
-
+// Switch players when currentPlayer clicks on an empty grid location
 function switchPlayers() {
-   if(player === "Player One"){
-      console.log("I am switching to Two");
-      player = "Player Two";
-
-   } else if(player === "Player Two") {
-      console.log("I am switching to One");
-      player = "Player One";
-
+   if(currentPlayer === playerOne.name){
+      currentPlayer = playerTwo.name;
+   } else if(currentPlayer === playerTwo.name) {
+      currentPlayer = playerOne.name;
    } else {
       console.log("Player switch is not working");
    }
-   whoIsPlaying.innerText = `It is ${player}'s turn`;
+   whoIsPlaying.innerText = `It is ${currentPlayer}'s turn`;
 }
 
-// Events
+function checkForId() {
+   console.log(playerOne.spotsFilled);
+   console.log(playerTwo.spotsFilled);
+}
+
+// Events -------------------------------------------------
 playBtn.addEventListener("click", makeBoard);
 playBtn.addEventListener("click", hideBtn);
 
-const winningCombos = [
-	[0, 1, 2],
-	[3, 4, 5],
-	[6, 7, 8],
-	[0, 3, 6],
-	[1, 4, 7],
-	[2, 5, 8],
-	[0, 4, 8],
-	[2, 4, 6]
-];
+gameBoard.addEventListener("click", checkForId);
