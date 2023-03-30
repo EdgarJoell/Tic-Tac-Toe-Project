@@ -5,7 +5,7 @@ const whoIsPlaying = document.querySelector("#turn-counter h3");
 let boardClasses;
 
 // Declare normal variables
-let player = "Player One";
+let player = "";
 
 // Functions
 function makeBoard(event) {
@@ -18,11 +18,14 @@ function makeBoard(event) {
       divs.style.cssText = "height: 9rem; width: 9rem; border: 2px solid #1d1e3d";
       gameBoard.appendChild(divs);
       divs.addEventListener("click", fillBox, {once: true});
-      divs.addEventListener("click", switchPlayers);
+      divs.addEventListener("click", addClass, {once: true});
+      divs.addEventListener("click", switchPlayers, {once: true});
    }
    boardClasses = document.querySelectorAll(".square");
    console.log(boardClasses);
    whoIsPlaying.innerText = "It is Player One's turn";
+   player = "Player One";
+   console.log(player);
 }
 
 function fillBox(event) {
@@ -30,12 +33,10 @@ function fillBox(event) {
       event.target.style.backgroundImage = "url(./Images/X-image.jpg)";
       event.target.style.backgroundSize = "cover";
       event.target.style.backgroundRepeat = "no-repeat";
-      event.target.addEventListener("click", addClass, {once: false});
    } else if(player === "Player Two"){ 
       event.target.style.backgroundImage = "url(./Images/O-image.jpg)";
       event.target.style.backgroundSize = "cover";
       event.target.style.backgroundRepeat = "no-repeat";
-      event.target.addEventListener("click", addClass), {once: false};
    } else {
       console.log("Can no longer click to change this");
    }
@@ -57,17 +58,15 @@ function hideBtn(event) {
    event.target.style.visibility = "hidden";
 }
 
-function switchPlayers(event) {
+function switchPlayers() {
    if(player === "Player One"){
+      console.log("I am switching to Two");
       player = "Player Two";
-      // event.target.classList.add("X");
-      // event.target.classList.remove("O");
-      // console.log("I should be first");
+
    } else if(player === "Player Two") {
+      console.log("I am switching to One");
       player = "Player One";
-      // event.target.classList.add("O");
-      // event.target.classList.remove("X");
-      // console.log("I should be second");
+
    } else {
       console.log("Player switch is not working");
    }
