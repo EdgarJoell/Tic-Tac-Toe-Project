@@ -18,11 +18,11 @@
    <main class="flex column">
          <button id="play-btn">PLAY!</button>
          <div id="scores" class="flex">
-            <div class="cream-background scorecard">
+            <div id="player-one" class="cream-background scorecard">
                <h2>P1 Score: <span>0</span></h2>
             </div>
-            <div class="cream-background scorecard">
-               <h2>P2 Score: <sapn>0</sapn></h2>
+            <div id="player-two" class="cream-background scorecard">
+               <h2>P2 Score: <span>0</span></h2>
             </div>
          </div>
          <div class="game-section">
@@ -39,9 +39,9 @@
                <div id="game-board"></div>
             </div>
             <div id="game-log" class="cream-background">
-               <p>Player One is the winner!</p>
-               <p>Player Two is the winner!</p>
-               <p>Player Two is the winner!</p>
+               <ul class="log">
+                  <!-- Inject list items whenever a player wins the game -->
+               </ul>
             </div>
          </div>
    </main>
