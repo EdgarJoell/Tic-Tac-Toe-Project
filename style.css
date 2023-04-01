@@ -88,6 +88,15 @@ main button {
    width: 10rem;
 }
 
+#reset-btn {
+   margin-left: -10rem;
+   visibility: hidden;
+}
+
+#play-btn {
+   margin-right: -10rem;
+}
+
 #scores {
    margin: 0 auto;
 }
