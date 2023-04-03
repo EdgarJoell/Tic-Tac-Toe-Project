@@ -177,10 +177,9 @@ function moveToLog() {
    for(let i = 0; i < logs.length; i++) {
       newLi.innerText = logs[i]
       gameLog.prepend(newLi)
-
-      if(logs.length >= 3) {
-         logs[2].pop()
-      }
+   }
+   if(logs.length >= 3) {
+      logs.pop()
    }
 }
 
