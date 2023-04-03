@@ -33,7 +33,7 @@ main {
 }
 
 main button {
-   background-color: #dadbe4;
+   background-color: white;
    height: 5rem;
    width: 20rem;
    border-radius: 70px;
@@ -42,6 +42,18 @@ main button {
    letter-spacing: 2px;
    font-style: italic;
    margin: 4rem auto;
+}
+
+.player-one {
+   color:#00B4FF;
+   font-size: 80pt;
+   text-align: center;
+}
+
+.player-two {
+   color: #005E85;
+   font-size: 80pt;
+   text-align: center;
 }
 
 .flex {
@@ -66,8 +78,8 @@ main button {
    align-items: center;
 }
 
-.cream-background {
-   background-color: #fff4e9;
+.white-background {
+   background-color: white;
 }
 
 .scorecard {
@@ -79,13 +91,14 @@ main button {
 }
 
 .log {
-   text-align: center;
+   text-align: left;
 }
 
 .log li {
-   list-style-type: none;
    height: 3rem;
-   width: 10rem;
+   width: 15rem;
+   font-size: 18pt;
+   margin: 2rem auto;
 }
 
 #reset-btn {
@@ -106,6 +119,7 @@ main button {
    height: 20rem;
    border-radius: 10px;
    border: 3px solid black;
+   visibility: hidden;
 }
 
 #turn-counter {
@@ -128,7 +142,7 @@ main button {
 }
 
 #game-log {
-   height: 15rem;
+   height: 17rem;
    width: 20rem;
    border-radius: 10px;
    border: 3px solid black;
@@ -137,9 +151,9 @@ main button {
 #game-board {
    display: flex;
    flex-wrap: wrap;
-   height: 27.75rem;
-   width: 27.9rem;
-   border: 2px solid #fff4e9;
+   height: 27.rem;
+   width: 27.25rem;
+   /* border: 2px solid #fff4e9; */
 }  
 
 #turn-counter h4 {
@@ -151,3 +165,18 @@ main button {
 #turn-counter h3 {
    margin: 0;
 }
+
+.one, .seven {
+   border-right: 2px solid black;
+   border-left: 2px solid black;
+}
+
+.three, .five {
+   border-top: 2px solid black;
+   border-bottom: 2px solid black;
+}
+
+.four {
+   border: 2px solid black;
+}
+
