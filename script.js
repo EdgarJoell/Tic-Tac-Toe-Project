@@ -5,6 +5,8 @@ const gameBoard = document.querySelector("#game-board");
 const whoIsPlaying = document.querySelector("#turn-counter h3");
 let playerOneScore = document.querySelector("#player-one span");
 let playerTwoScore = document.querySelector("#player-two span");
+let playerOneBox = document.querySelector("#player-one");
+let playerTwoBox = document.querySelector("#player-two");
 let gameLog = document.querySelector(".log");
 
 // Player Objects -----------------------------------------
@@ -44,6 +46,7 @@ function makeBoard() {
       let divs = document.createElement("div");
       divs.setAttribute("id", i);
       divs.classList.add("square");
+      divs.classList.add("hover");
       divs.style.cssText = "height: 9rem; width: 9rem";
       if(i == 1){
          divs.classList.add("one");
@@ -77,6 +80,11 @@ function checkWin() {
          if(playerOne.spotsFilled.includes(winningCombos[arr][0]) && playerOne.spotsFilled.includes(winningCombos[arr][1]) && playerOne.spotsFilled.includes(winningCombos[arr][2])) {
             playerOne.score++;
             playerOneScore.innerText = playerOne.score;
+            playerOneBox.style.backgroundColor = "green";
+            playerOneBox.style.color = "white";
+            playerOneBox.style.borderColor = "yellow";
+            playerTwoBox.style.backgroundColor = "red";
+            playerTwoBox.style.color = "white";
             whoIsPlaying.innerText = `The winner is ${playerOne.name}!`;
             winner = playerOne.name;
             moveToLog();
@@ -85,6 +93,11 @@ function checkWin() {
          } else if(playerTwo.spotsFilled.includes(winningCombos[arr][0]) && playerTwo.spotsFilled.includes(winningCombos[arr][1]) && playerTwo.spotsFilled.includes(winningCombos[arr][2])) {
             playerTwo.score++;
             playerTwoScore.innerText = playerTwo.score;
+            playerTwoBox.style.backgroundColor = "green";
+            playerTwoBox.style.color = "white";
+            playerTwoBox.style.borderColor = "yellow";
+            playerOneBox.style.backgroundColor = "red";
+            playerOneBox.style.color = "white";
             whoIsPlaying.innerText = `The winner is ${playerTwo.name}!`;
             winner = playerTwo.name;
             moveToLog();
@@ -117,6 +130,12 @@ function resetBoard() {
    resetBtn.style.visibility = "hidden";
    turnCounter = 0;
    makeBoard();
+   playerOneBox.style.backgroundColor = "white";
+   playerOneBox.style.color = "black";
+   playerOneBox.style.borderColor = "black";
+   playerTwoBox.style.backgroundColor = "white";
+   playerTwoBox.style.color = "black";
+   playerTwoBox.style.borderColor = "black";
 }
 
 // Hide play button at beginning
@@ -173,13 +192,9 @@ function moveToLog() {
       newLog = "It was a draw";
       logs.unshift(newLog);
    }
-
    for(let i = 0; i < logs.length; i++) {
       newLi.innerText = logs[i]
       gameLog.prepend(newLi)
-   }
-   if(logs.length >= 3) {
-      logs.pop()
    }
 }
 

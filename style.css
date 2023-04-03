@@ -44,6 +44,11 @@ main button {
    margin: 4rem auto;
 }
 
+main button:hover {
+   background-color: #00B4FF;
+   color: white;
+}
+
 .player-one {
    color:#00B4FF;
    font-size: 80pt;
@@ -180,3 +185,6 @@ main button {
    border: 2px solid black;
 }
 
+.hover:hover {
+   background-color: #a6a7c5;
+}
